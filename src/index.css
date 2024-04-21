@@ -12,6 +12,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --primary: #4b69ff;
+  --primarylight: #4760df2f;
   --button-bg:#333438;
   --background: #1c1d22;
   --container:#2a2b2f;
@@ -185,4 +186,200 @@ h1,h2,h3,h4,h5{
 .menu a.active{
   background-color: var(--primary);
   color: var(--text-primary);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Translucent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+.modal-content {
+  width: 45vw;
+  background: var(--background);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+
+.task-form{
+  width: 100%;
+}
+
+.task-form h2{
+  font-size: 18px;
+  font-family: var(--body-font);
+  margin-bottom: 20px;
+}
+
+.input-container{
+  width: 100%;
+  display: flex;
+  justify-content:flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.input-container input{
+  width: 100%;
+  padding: 12px;
+  margin: 12px auto;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--background-blue);
+}
+
+.input-container textarea{
+  padding: 12px;
+  width: 100%;
+  background-color: var(--background-blue);
+  min-height: 50px;
+  margin:  20px auto;
+  border: none;
+}
+
+.task-form button{
+  color: var(--text-primary);
+  border: none;
+  padding: 12px 24px;
+  margin: 0 auto;
+  cursor: pointer;
+  border-radius: 6px;
+  background-color: var(--primary);
+}
+
+.tags-container{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  flex-wrap: 1;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.tags-container .tag{
+  font-size: 10px;
+  color: var(--primary);
+  background-color: var(--primarylight);
+  border-radius: 24px;
+  padding: 6px 10px;
+}
+
+.tag.tag-large{
+  padding: 6px 24px;
+  font-size: 14px !important;
+}
+
+.task-container{
+  background-color: var(--background-blue);
+  padding:20px;
+  border-radius: 12px;
+}
+
+.not-found-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: span 3;
+  min-height: 60vh;
+}
+
+.not-found-container h2{
+  text-align: center;
+  width: 100%;
+}
+
+.task-detail-header{
+  width: 100%;
+  padding: 24px;
+  border-bottom: 1px solid #4d4b4b;
+}
+
+.task-detail-header h2{
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.task-detail-container{
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-btn{
+  background-color: var(--primary);
+  color: white;
+  padding: 16px 24px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 24px;
+}
+
+.todo-container{
+  width: 100%;
+  background-color: var(--background-blue);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 5vh auto;
+}
+
+.todo-name{
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.todo-card{
+  width: 100%;
+  background-color: var(--cardbg);
+  padding: 12px;
+  margin: 20px auto;
+  border-radius: 12px;
+}
+
+.todo-card h2{
+  font-size: 1em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5em; /* Space between icon and text */
+}
+
+/* Styles for specific data-status values */
+.todo-card[data-status="Completed"] h2 {
+  color: var(--text-secondary);
+  text-decoration: line-through; /* Strikethrough for completed tasks */
+}
+
+/* Styles for specific data-status values */
+.todo-card[data-status="Incomplete"] h2 {
+  color: var(--red);
+}
+
+.todo-container{
+  width: 100%;
+  min-height: 75vh;
 }

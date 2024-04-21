@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useMemo } from "react";
+import { createContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 // Create the context with initial values for cards and drag-and-drop states
@@ -7,15 +7,14 @@ const CardContext = createContext({
   addCard: () => {},
   removeCard: () => {},
   addCards: () => {},
+  currentCard:null,
   updateCardStatus: () => {},
   getCardsByStatus: () => {},
-  complete: [],
-  incomplete: [],
-  inProgress: [],
   dropListID: null,
   draggedItemID: null,
   setDropListID: () => {},
   setDraggedItemID: () => {},
+  setCurrentTaskCard: ()=> {},
 });
 
 // Local storage key for saving card data
@@ -29,11 +28,14 @@ const CardContextProvider = ({ children }) => {
     return storedCards ? JSON.parse(storedCards) : [];
   });
 
-  // State to hold the ID of the list where a card is dropped
-  const [dropListID, setDropListID] = useState(null);
+  const [ currentCard , setCurrentCard]= useState(null);
 
-  // State to hold the ID of the dragged item
-  const [draggedItemID, setDraggedItemID] = useState(null);
+  const setCurrentTaskCard = (cardID) =>{
+    const card = cards.filter(val=>val.id === cardID);
+    if(card && card[0]){
+      setCurrentCard(card[0]);
+    }
+  }
 
   // Function to add a new card
   const addCard = (newCard) => {
@@ -76,19 +78,6 @@ const CardContextProvider = ({ children }) => {
     });
   };
 
-  // Memoized arrays for different statuses
-  const complete = useMemo(() => {
-    return cards.filter((card) => card.status === "Complete");
-  }, [cards]);
-
-  const incomplete = useMemo(() => {
-    return cards.filter((card) => card.status === "Incomplete");
-  }, [cards]);
-
-  const inProgress = useMemo(() => {
-    return cards.filter((card) => card.status === "In Progress");
-  }, [cards]);
-
   // Save cards to local storage whenever they change
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cards));
@@ -103,13 +92,8 @@ const CardContextProvider = ({ children }) => {
         addCards,
         updateCardStatus,
         getCardsByStatus,
-        complete,
-        incomplete,
-        inProgress,
-        dropListID,
-        draggedItemID,
-        setDropListID,
-        setDraggedItemID,
+        currentCard,
+        setCurrentTaskCard
       }}
     >
       {children}
@@ -122,4 +106,4 @@ CardContextProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export { CardContext, CardContextProvider };
+export { CardContext, CardContextProvider};

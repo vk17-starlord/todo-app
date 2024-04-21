@@ -11,7 +11,7 @@ function Sidebar() {
 		</h2>
 
 		<div className="menu">
-			<NavLink to='/'>
+			<NavLink to='/tasks'>
 			<i className='bx bx-grid-alt'></i> Tasks
 			</NavLink>
 			<NavLink to="/focus">

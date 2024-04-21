@@ -1,58 +1,49 @@
 import useCardContext from '@/hooks/useCardContext';
-import TodoCardContainer from './TodoCardContainer';
+
 import styles from './card.module.css';
-import { useEffect, useState } from 'react';
+import {   useState } from 'react';
+import Modal from '../modal/Modal';
+import TaskCardForm from './TaskCardForm';
+import TodoParentCard from './TodoParentCard';
+// import { cardData } from '@/data/card';
 // import { cardData } from '@/data/card.js'
+
 function CardContainer() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   const store  = useCardContext();
-  const [cardContainerData, setcardContainerData] = useState([
-    {
-      id:'In Progress',
-      heading:'In Progress Tasks',
-      data:store.inProgress
-    },
-    {
-      id:'Complete',
-      heading:'Completed Tasks',
-      data:store.complete
-    },
-    {
-      id:'Incomplete',
-      heading:'Incomplete Tasks',
-      data:store.incomplete
-    },
-  ]);
-  
-  useEffect(()=>{
-    setcardContainerData([
-      {
-        id:'In Progress',
-        heading:'In Progress Tasks',
-        data:store.inProgress
-      },
-      {
-        id:'Complete',
-        heading:'Completed Tasks',
-        data:store.complete
-      },
-      {
-        id:'Incomplete',
-        heading:'Incomplete Tasks',
-        data:store.incomplete
-      },
-    ])
-  },[store])
+  // store.addCards(cardData)
 
-
+  const onSave = (val)=>{
+    store.addCard(val);
+    alert('Card Added !!')
+    closeModal();
+  }
   return (
 	<div  className={styles.card_section}>
-    <h2 className={styles.section_heading}> <i className='bx bxs-dashboard'></i> Board View</h2>
-    <div className="grid-cols-3">
-      {cardContainerData.map((card,idx)=>{
-            return (<div key={`card-${idx}`} className="col" id={card.id}  >
-              <TodoCardContainer id={card.id}   heading={card.heading} data={card.data} />
-            </div>)
-      })}
+     <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <TaskCardForm card={null} onSave={onSave} />
+      </Modal>
+      <div className={styles.section_header}>
+      <h2 className={styles.section_heading}> <i className='bx bxs-dashboard'></i> Board View</h2>
+      <button onClick={openModal} className={styles.section_addbtn}> Add Task </button>
+      </div>
+    <div className="grid-cols-3 task-container">
+      {
+        store.cards.length > 0 ? store.cards.map((card)=>{
+          return (  <TodoParentCard id={card.id} key={`card-${card.id}`} card={card} /> )
+        }) : <div className='not-found-container'>
+          <h2 className='not-found'>No Cards Found</h2>
+        </div>
+      }
     </div>
   </div>
   )

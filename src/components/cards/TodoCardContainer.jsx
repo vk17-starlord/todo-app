@@ -1,51 +1,51 @@
+import PropTypes from 'prop-types';
+import TodoCard from './TodoCard';
+import useSubTaskContext from '@/hooks/useSubtaskContext';
 
-import PropTypes from "prop-types";
-import styles from "./card.module.css";
-import TodoParentCard from "./TodoParentCard";
-import useCardContext from "@/hooks/useCardContext";
-
-function TodoCardContainer({  id , heading, data }) {
-  const cardstore = useCardContext();
+function TodoCardContainer({ parentID , tasks, status }) {
+  const cardStore = useSubTaskContext();
 
   const handleDrop = (e) => {
     e.preventDefault();
+    const draggedItemId = cardStore.draggedItemID;
     const status = e.currentTarget.dataset.status;
-    const draggedItemId = cardstore.draggedItemID;
-    cardstore.updateCardStatus(draggedItemId,status);
+    const parendID = e.currentTarget.dataset.parentid
+    if(parendID && status && draggedItemId){
+      cardStore.updateSubtaskStatus(parentID, draggedItemId, status)
+    }
   }
 
   const handleDragOver = (e) => e.preventDefault()
 
   return (
-    <div className={styles.todo_container} data-status={id} onDrop={handleDrop}
+    <div className="w-full">
+    <h2>{status}</h2>
+    <div className="w-full todo-container"
+    data-status={status}
+    data-parentid={parentID}
+    onDrop={handleDrop}
     onDragOver={handleDragOver}>
-      <div className={styles.todo_title_container}>
-        <h2> {heading}</h2>
-      </div>
-
-      <div className={styles.todo_cards}>
-        {data.length > 0 ? (
-          data.map((card, index) => (
-            <TodoParentCard id={id} key={`card-${index}`} card={card} />
-          ))
-        ) : (
-          <p>No cards to display</p>
-        )}
-      </div>
+      {
+        tasks.map((ele)=>{
+        return ( <TodoCard key={ele.id} status={status} card={ele} />)
+        })
+      }
+    </div>
     </div>
   );
 }
 
-// Define prop types for the component
 TodoCardContainer.propTypes = {
-  id:PropTypes.string.isRequired,
-  heading: PropTypes.string.isRequired, // Heading must be a string
-  data: PropTypes.arrayOf(
+  parentID:PropTypes.string.isRequired,
+  // tasks should be an array, with each item being an object with at least an 'id' and a 'status'
+  tasks: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired, // Each card must have a name
-      description: PropTypes.string.isRequired, // Each card must have a description
+      id: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired,
     })
-  ).isRequired, // Data must be an array of card objects
+  ).isRequired,
+  // status should be a string
+  status: PropTypes.string.isRequired,
 };
 
 export default TodoCardContainer;
