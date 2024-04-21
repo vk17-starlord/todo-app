@@ -20,10 +20,7 @@ function TodoCardContainer({  id , heading, data }) {
     <div className={styles.todo_container} data-status={id} onDrop={handleDrop}
     onDragOver={handleDragOver}>
       <div className={styles.todo_title_container}>
-        <h2>{heading}</h2>
-        <button>
-          <i className="bx bx-plus"></i> Add
-        </button>
+        <h2> {heading}</h2>
       </div>
 
       <div className={styles.todo_cards}>

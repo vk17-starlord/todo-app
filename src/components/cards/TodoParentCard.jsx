@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import styles from "./card.module.css";
 import { useRef } from 'react';
 import useCardContext from '@/hooks/useCardContext';
+import { NavLink } from 'react-router-dom';
 
 function TodoParentCard({ id,card }) {
   const cardstore = useCardContext();
@@ -58,7 +59,7 @@ function TodoParentCard({ id,card }) {
     data-itemid={card.id}
     draggable
     className={styles.todo_card}>
-		<h2>{name}</h2>
+		<h2> <i className='bx bx-grid-small'></i> {name}</h2>
     <span>{category}</span>
     <div className={styles.progress_container}>
       <h2><i className='bx bx-list-check'></i> Progress </h2>
@@ -69,9 +70,17 @@ function TodoParentCard({ id,card }) {
     </div>
     <div>
 
+    <div className={styles.btn_container}>
+   
     <button className={styles.btn}>
       { formattedDate }
     </button>
+    <NavLink to='/focus'>
+    <button className={styles.viewbtn}>
+      View
+    </button>
+    </NavLink>
+    </div>
     </div>
     </div>
   );

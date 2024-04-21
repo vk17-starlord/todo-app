@@ -2,7 +2,7 @@ import useCardContext from '@/hooks/useCardContext';
 import TodoCardContainer from './TodoCardContainer';
 import styles from './card.module.css';
 import { useEffect, useState } from 'react';
-import { cardData } from '@/data/card.js'
+// import { cardData } from '@/data/card.js'
 function CardContainer() {
   const store  = useCardContext();
   const [cardContainerData, setcardContainerData] = useState([
@@ -47,7 +47,6 @@ function CardContainer() {
   return (
 	<div  className={styles.card_section}>
     <h2 className={styles.section_heading}> <i className='bx bxs-dashboard'></i> Board View</h2>
-
     <div className="grid-cols-3">
       {cardContainerData.map((card,idx)=>{
             return (<div key={`card-${idx}`} className="col" id={card.id}  >

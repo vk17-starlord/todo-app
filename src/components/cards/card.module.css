@@ -104,6 +104,24 @@
 	border-radius: 24px;
 	border: none;
 	background-color: var(--button-bg);
-	margin: 20px auto;
+	margin: 20px 0;
 	margin-bottom: 10px;
 }
+
+.btn_container{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.viewbtn{
+	color: var(--text-primary);
+	padding: 12px 24px;
+	border-radius: 24px;
+	border: none;
+	background-color: var(--primary);
+	margin: 20px 0;
+	margin-bottom: 10px;
+}
+
