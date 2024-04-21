@@ -1,25 +1,30 @@
-import useSubTaskContext from '@/hooks/useSubtaskContext';
-import PropTypes from 'prop-types';
+import useSubTaskContext from "@/hooks/useSubtaskContext";
+import PropTypes from "prop-types";
 
-function TodoCard({ card = {} , status='' }) {
+function TodoCard({ card = {}, status = "" }) {
   const subtaskStore = useSubTaskContext();
 
-  const handleDragStart = (e)=>{
-	const id = e.currentTarget.dataset.currentid;
-	if(id){
-		subtaskStore.setDraggedItemID(id)
-	}
-  }
+  const handleDragStart = (e) => {
+    const id = e.currentTarget.dataset.currentid;
+    if (id) {
+      subtaskStore.setDraggedItemID(id);
+    }
+  };
 
   return (
     <div
-	onDragStart={(e) => handleDragStart(e)}
-    onDragOver={(e) => e.preventDefault()}
-	draggable
-	data-status={status}
-	data-currentid={card.id}
-	className='todo-card'>
-      <h2  className='todo-name'><i className='bx bx-move'></i> {card.name || 'Unnamed Task'}</h2>
+      onDragStart={(e) => handleDragStart(e)}
+      onDragOver={(e) => e.preventDefault()}
+      draggable
+      data-status={status}
+      data-currentid={card.id}
+      className="todo-card"
+    >
+      <div className="shape" data-status={status}>
+        {status == "Completed" && <i className="bx bxs-check-circle"></i>}
+		{status == "Incomplete" && <i className="bx bxs-x-circle"></i>}
+      </div>
+      <h2 className="todo-name"> {card.name || "Unnamed Task"}</h2>
     </div>
   );
 }

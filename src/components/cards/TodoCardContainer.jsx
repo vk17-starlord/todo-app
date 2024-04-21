@@ -19,7 +19,7 @@ function TodoCardContainer({ parentID , tasks, status }) {
 
   return (
     <div className="w-full">
-    <h2>{status}</h2>
+    <h2 className='todo-heading'>{status}</h2>
     <div className="w-full todo-container"
     data-status={status}
     data-parentid={parentID}

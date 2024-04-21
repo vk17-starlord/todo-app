@@ -16,7 +16,7 @@ export const tasks = {
       {
         id: "sub3",
         name: "Implement Backend",
-        status: "InProgress",
+        status: "Pending",
         time: "3 hours",
       },
     ],

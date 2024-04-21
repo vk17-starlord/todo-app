@@ -15,7 +15,7 @@ function Task() {
   }, [cardStore, id]);
 
   const store = useSubTaskContext();
-  const status = ["InProgress", "Completed", "Incomplete"];
+  const status = ["Pending", "Completed", "Incomplete"];
   const [subTasks, setsubTasks] = useState(store.getSubtasksByParentID(id));
 
   useEffect(() => {
