@@ -1,155 +1,154 @@
-.card_section{
-	width: 100%;
-	margin: 40px auto;
+.card_section {
+    width: 100%;
+    margin: 40px auto;
 }
 
-.section_heading{
-	font-family: var(--body-font);
-	font-size: 18px;
-	line-height: 32px;
-	padding-bottom: 24px;
-
+.section_heading {
+    font-family: var(--body-font);
+    font-size: 18px;
+    line-height: 32px;
+    padding-bottom: 24px;
 }
 
-.section_header{
-	width: 100%;
-	display: flex;
-	align-content: center;
-	justify-content: space-between;
-	padding-bottom: 20px;
-	border-bottom: 1px solid #ffffff54;
+.section_header {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ffffff54;
 }
 
-.section_header .section_addbtn{
-	padding: 2px 20px;
-	background-color: var(--primary);
-	border: none;
-	color: var(--text-primary);
-	border-radius: 32px;
-	font-weight: bold;
-	cursor: pointer;
+.section_header .section_addbtn {
+    padding: 2px 20px;
+    background-color: var(--primary);
+    border: none;
+    color: var(--text-primary);
+    border-radius: 32px;
+    font-weight: bold;
+    cursor: pointer;
 }
-.todo_container{
-	width: 100%;
-	background-color: var(--background-blue);
-	border-radius: 12px;
-	padding: 12px;
-	margin: auto ;
-	min-height: 75vh;
+.todo_container {
+    width: 100%;
+    background-color: var(--background-blue);
+    border-radius: 12px;
+    padding: 12px;
+    margin: auto;
+    min-height: 75vh;
 }
-.todo_title_container{
-	width: 100%;
-	padding: 12px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+.todo_title_container {
+    width: 100%;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.todo_title_container h2{
-	font-family: var(--body-font);
-	font-size: 18px;
-}
-
-.todo_title_container button{
-	color: var(--text-primary);
-	border:none;
-	border-radius: 6px;
-	font-weight: bold;
-	padding: 8px 24px;
-	background-color: var(--primary) !important;
+.todo_title_container h2 {
+    font-family: var(--body-font);
+    font-size: 18px;
 }
 
-.card_header{
-	font-size: 20px;
-	margin: 20px auto;
+.todo_title_container button {
+    color: var(--text-primary);
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    padding: 8px 24px;
+    background-color: var(--primary) !important;
 }
 
-.todo_cards{
-	margin: 20px auto;
-	padding: 12px;
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
+.card_header {
+    font-size: 20px;
+    margin: 20px auto;
 }
 
-.todo_card{
-	padding: 12px;
-	border-radius: 6px;
-	cursor:pointer;
-	font-family: var(--body-font);
-	background-color: var(--cardbg);
+.todo_cards {
+    margin: 20px auto;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.todo_card h2{
-	font-size: 18px;
-	font-family: var(--body-font);
-	line-height: 24px;
-}
-.todo_card span{
-	font-size: 16px;
-	color: var(--text-secondary);
+.todo_card {
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--body-font);
+    background-color: var(--cardbg);
 }
 
-.progress_container{
-	margin: 20px auto;
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
+.todo_card h2 {
+    font-size: 18px;
+    font-family: var(--body-font);
+    line-height: 24px;
 }
-.progress_container h2 i , .progress_container h2{
-	font-size: 15px;
-}
-
-.progress_container span{
-	color: var(--text-primary);
-	font-weight: bold;
-	font-size: 16px;
+.todo_card span {
+    font-size: 16px;
+    color: var(--text-secondary);
 }
 
-.line{
-	width: 100%;
-	height: 4px;
-	background-color: var(--yellow);
+.progress_container {
+    margin: 20px auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
-.linebg{
-	width: 100%;
-	height: auto;
-	background-color: var(--background-blue);
-}
-.btn{
-	color: var(--text-secondary);
-	padding: 12px 24px;
-	border-radius: 24px;
-	border: none;
-	background-color: var(--button-bg);
-	margin: 20px 0;
-	margin-bottom: 10px;
+.progress_container h2 i,
+.progress_container h2 {
+    font-size: 15px;
 }
 
-.btn_container{
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
+.progress_container span {
+    color: var(--text-primary);
+    font-weight: bold;
+    font-size: 16px;
 }
 
-.viewbtn{
-	color: var(--text-primary);
-	padding: 12px 24px;
-	border-radius: 24px;
-	border: none;
-	background-color: var(--primary);
-	margin: 20px 0;
-	margin-bottom: 10px;
-	
+.line {
+    width: 100%;
+    height: 4px;
+    background-color: var(--yellow);
+}
+.linebg {
+    width: 100%;
+    height: auto;
+    background-color: var(--background-blue);
+}
+.btn {
+    color: var(--text-secondary);
+    padding: 12px 24px;
+    border-radius: 24px;
+    border: none;
+    background-color: var(--button-bg);
+    margin: 20px 0;
+    margin-bottom: 10px;
 }
 
-.task_card_header{
-	width: 100%;
-	display: flex;
-	justify-content: flex-start;
-	padding-bottom: 10px;
-	align-items: center;
+.btn_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.viewbtn {
+    color: var(--text-primary);
+    padding: 12px 24px;
+    border-radius: 24px;
+    border: none;
+    background-color: var(--primary);
+    margin: 20px 0;
+    margin-bottom: 10px;
+}
+
+.task_card_header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+    align-items: center;
 }
