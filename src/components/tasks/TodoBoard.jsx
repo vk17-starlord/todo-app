@@ -1,18 +1,12 @@
 import PropTypes from 'prop-types';
 import TodoCard from './TodoCard';
-import useSubTaskContext from '@/hooks/useSubtaskContext';
+import useTaskContext from '../hooks/useTaskContext';
 
-function TodoCardContainer({ parentID, tasks, status }) {
-    const cardStore = useSubTaskContext();
+function TodoBoard({ parentID, tasks, status }) {
+    const taskStore = useTaskContext();
 
     const handleDrop = (e) => {
         e.preventDefault();
-        const draggedItemId = cardStore.draggedItemID;
-        const status = e.currentTarget.dataset.status;
-        const parendID = e.currentTarget.dataset.parentid;
-        if (parendID && status && draggedItemId) {
-            cardStore.updateSubtaskStatus(parentID, draggedItemId, status);
-        }
     };
 
     const handleDragOver = (e) => e.preventDefault();
@@ -35,7 +29,7 @@ function TodoCardContainer({ parentID, tasks, status }) {
     );
 }
 
-TodoCardContainer.propTypes = {
+TodoBoard.propTypes = {
     parentID: PropTypes.string.isRequired,
     // tasks should be an array, with each item being an object with at least an 'id' and a 'status'
     tasks: PropTypes.arrayOf(
@@ -48,4 +42,4 @@ TodoCardContainer.propTypes = {
     status: PropTypes.string.isRequired
 };
 
-export default TodoCardContainer;
+export default TodoBoard;
