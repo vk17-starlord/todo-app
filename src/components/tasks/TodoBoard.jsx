@@ -48,7 +48,7 @@ function TodoBoard({ categoryID, tasks, status, openEditForm }) {
                             src="https://cdn.dribbble.com/userupload/2774328/file/original-758f4583933d262698350847b24e44a8.png?resize=1200x900"
                             alt=""
                         />
-                        <h2>No Tasks Found 🫣</h2>
+                        <h4>No Tasks Found 🫣</h4>
                     </div>
                 )}
             </div>

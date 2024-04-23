@@ -43,6 +43,9 @@ function TaskHeader() {
                 Please Drag and Drop Boxes around the boards to manage them , or click on the
                 checkbox to mark them
             </p>
+            <p className="notice">
+                Click on Categories in sidebar to filter the tasks by categories
+            </p>
         </div>
     );
 }
