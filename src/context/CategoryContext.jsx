@@ -1,9 +1,11 @@
-import { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-// Create the context with initial values for categories
+// Create the context with initial values for categories and active category
 const CategoryContext = createContext({
     categories: [],
+    activeCategory: null,
+    setActiveCategory: () => {},
     addCategory: () => {},
     removeCategory: () => {},
     updateCategory: () => {},
@@ -21,6 +23,9 @@ const CategoryContextProvider = ({ children }) => {
         const storedCategories = localStorage.getItem(LOCAL_STORAGE_KEY);
         return storedCategories ? JSON.parse(storedCategories) : [];
     });
+
+    // State to track the active category
+    const [activeCategory, setActiveCategory] = useState(null);
 
     // Function to add a new categories
     const addCategories = (newCategories) => {
@@ -73,6 +78,8 @@ const CategoryContextProvider = ({ children }) => {
         <CategoryContext.Provider
             value={{
                 categories,
+                activeCategory,
+                setActiveCategory,
                 addCategory,
                 removeCategory,
                 updateCategory,

@@ -25,18 +25,24 @@ function TaskHeader() {
     const formattedDate = `${day} ${monthName} ${year}`;
 
     return (
-        <div className="w-full task-header">
-            <div>
-                <h2>Hello , User 👋🏻</h2>
-                <p>Today , {formattedDate} </p>
+        <div className="w-full">
+            <div className="w-full task-header">
+                <div>
+                    <h2>Hello , User 👋🏻</h2>
+                    <p>Today , {formattedDate} </p>
+                </div>
+                <div>
+                    <img
+                        className="avatar"
+                        src="https://cdn.dribbble.com/users/418623/screenshots/19215624/media/94e84860880e81d910bca36869c2435f.jpg"
+                        alt=""
+                    />
+                </div>
             </div>
-            <div>
-                <img
-                    className="avatar"
-                    src="https://cdn.dribbble.com/users/418623/screenshots/19215624/media/94e84860880e81d910bca36869c2435f.jpg"
-                    alt=""
-                />
-            </div>
+            <p className="notice">
+                Please Drag and Drop Boxes around the boards to manage them , or click on the
+                checkbox to mark them
+            </p>
         </div>
     );
 }

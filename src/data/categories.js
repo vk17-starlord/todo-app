@@ -1,37 +1,30 @@
-[
+export const dummyCategories = [
     {
         id: '1',
-        name: 'Work',
-        color: '#3498db'
+        name: 'Work'
     },
     {
         id: '2',
-        name: 'Personal',
-        color: '#e74c3c'
+        name: 'Personal'
     },
     {
         id: '3',
-        name: 'Health',
-        color: '#2ecc71'
+        name: 'Health'
     },
     {
         id: '4',
-        name: 'Education',
-        color: '#f1c40f'
+        name: 'Education'
     },
     {
         id: '5',
-        name: 'Finances',
-        color: '#9b59b6'
+        name: 'Finances'
     },
     {
         id: '6',
-        name: 'Shopping',
-        color: '#34495e'
+        name: 'Shopping'
     },
     {
         id: '7',
-        name: 'Hobbies',
-        color: '#e67e22'
+        name: 'Hobbies'
     }
 ];

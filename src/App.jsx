@@ -1,5 +1,3 @@
-import './App.css';
-
 import Sidebar from './components/Sidebar';
 import Task from './components/tasks/Task';
 
