@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import useTaskContext from '../hooks/useTaskContext';
 import useCategoryContext from '../hooks/useCategoryContext';
+import PropTypes from 'prop-types';
 
 import TodoBoard from './TodoBoard';
 
-function TaskContainer() {
+function TaskContainer({ openEditForm }) {
     const taskContext = useTaskContext();
     const categoryContext = useCategoryContext();
     const boards = ['Pending', 'Completed', 'Incomplete'];
@@ -30,6 +31,7 @@ function TaskContainer() {
                 {boards.map((board) => {
                     return (
                         <TodoBoard
+                            openEditForm={openEditForm}
                             key={board}
                             categoryID={active}
                             tasks={tasks.filter((ele) => ele.status == board)}
@@ -62,10 +64,14 @@ function TaskContainer() {
                     categoryID={active}
                     tasks={tasks.filter((ele) => ele.status == showOnly)}
                     status={showOnly}
+                    openEditForm={openEditForm}
                 ></TodoBoard>
             </div>
         </div>
     );
 }
 
+TaskContainer.propTypes = {
+    openEditForm: PropTypes.func
+};
 export default TaskContainer;

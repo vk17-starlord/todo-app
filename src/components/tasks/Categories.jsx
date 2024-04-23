@@ -20,7 +20,16 @@ function Categories() {
     useEffect(() => {
         // set initially on first visit 1st category id
         console.log('initially updated');
-        categoryContext.setActiveCategory(categoryContext.categories[0].id);
+        if (
+            categoryContext.categories.length > 0 &&
+            categoryContext.categories[0].id &&
+            !categoryContext.activeCategory
+        ) {
+            categoryContext.setActiveCategory(categoryContext.categories[0].id);
+        }
+        if (categoryContext.activeCategory) {
+            categoryContext.setActiveCategory(categoryContext.activeCategory);
+        }
     }, []);
 
     return (
@@ -30,7 +39,7 @@ function Categories() {
                     const isRemoving = removing.includes(ele.id);
                     const className = `category-container  ${ele.id == categoryContext.activeCategory ? 'active' : ''} ${isRemoving ? 'fadeOut' : ''}`; // Apply fade-out if needed
                     const categoryTasks = taskContext.getProgress(ele.id, 'Completed');
-                    const tasksLength = taskContext.tasks[ele.id]?.length;
+                    const tasksLength = taskContext.tasks[ele.id]?.length || 0;
                     // Calculate the completion percentage
                     let completionPercentage = 0;
 

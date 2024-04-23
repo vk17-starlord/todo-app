@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import TodoCard from './TodoCard';
 import useTaskContext from '../hooks/useTaskContext';
 
-function TodoBoard({ categoryID, tasks, status }) {
+function TodoBoard({ categoryID, tasks, status, openEditForm }) {
     const cardStore = useTaskContext();
     console.log(categoryID, tasks, status, 'here');
 
@@ -36,6 +36,7 @@ function TodoBoard({ categoryID, tasks, status }) {
                     tasks.map((ele) => {
                         return (
                             <TodoCard
+                                openEditForm={openEditForm}
                                 categoryID={categoryID}
                                 key={ele.id}
                                 status={status}
@@ -59,6 +60,7 @@ function TodoBoard({ categoryID, tasks, status }) {
 }
 
 TodoBoard.propTypes = {
+    openEditForm: PropTypes.func.isRequired,
     categoryID: PropTypes.string || PropTypes.any,
     // tasks should be an array, with each item being an object with at least an 'id' and a 'status'
     tasks: PropTypes.arrayOf(

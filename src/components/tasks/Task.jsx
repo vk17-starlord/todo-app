@@ -27,19 +27,36 @@ function Task() {
             tags: val.tags,
             status: 'Incomplete' // Ensure a comma is placed at the end of each property
         };
-        console.log(task);
         taskContext.addTask(val.category, task);
 
         closeModal();
     };
 
+    const [currentCard, setcurrentCard] = useState(null);
+    const openEdit = (card) => {
+        setcurrentCard(card);
+        openModal();
+    };
+
+    const onEdit = (val) => {
+        const task = {
+            id: val.id, // Assigning the generated UUID to the task object
+            title: val.title,
+            time: val.time,
+            tags: val.tags,
+            status: val.status // Ensure a comma is placed at the end of each property
+        };
+        taskContext.updateTask(val.category, task.id, task);
+        closeModal();
+        setcurrentCard(null);
+    };
     return (
         <div className="w-full">
             <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <TaskForm onSubmit={onSubmit} />
+                <TaskForm onEdit={onEdit} task={currentCard} onSubmit={onSubmit} />
             </Modal>
             <TaskHeader />
-            <TaskContainer />
+            <TaskContainer openEditForm={openEdit} />
             <button className="add-task" onClick={openModal}>
                 <i className="bx bxs-add-to-queue"></i>
             </button>

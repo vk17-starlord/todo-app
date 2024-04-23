@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import useTaskContext from '../hooks/useTaskContext';
 import { useState } from 'react';
 
-function TodoCard({ categoryID = 0, card = {}, status = '' }) {
+function TodoCard({ categoryID = 0, card = {}, status = '', openEditForm }) {
     const [removing, setRemoving] = useState(false); // State to track items being removed
     const taskStore = useTaskContext();
     const handleDragStart = (e) => {
@@ -11,6 +11,10 @@ function TodoCard({ categoryID = 0, card = {}, status = '' }) {
             console.log(id);
             taskStore.setDraggedItemID(id);
         }
+    };
+
+    const editItem = () => {
+        openEditForm(card);
     };
 
     const removeItem = () => {
@@ -46,9 +50,14 @@ function TodoCard({ categoryID = 0, card = {}, status = '' }) {
                     </div>
                     <h2 className="todo-name"> {card.title || 'Unnamed Task'}</h2>
                 </div>
-                <button className="cut" onClick={removeItem}>
-                    <i className="bx bx-x"></i>
-                </button>
+                <div className="right">
+                    <button className="edit" onClick={editItem}>
+                        <i className="bx bxs-edit-alt"></i>
+                    </button>
+                    <button className="cut" onClick={removeItem}>
+                        <i className="bx bx-x"></i>
+                    </button>
+                </div>
             </div>
             <div className="tag-container">
                 {card.tags.map((ele) => {
@@ -65,6 +74,7 @@ function TodoCard({ categoryID = 0, card = {}, status = '' }) {
 
 // PropTypes validation to ensure the card prop is an object with a specific shape
 TodoCard.propTypes = {
+    openEditForm: PropTypes.func.isRequired,
     categoryID: PropTypes.string,
     status: PropTypes.string,
     card: PropTypes.shape({

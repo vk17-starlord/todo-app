@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import useCategoryContext from '../hooks/useCategoryContext';
 
 const TaskForm = ({ task, onSubmit, onEdit }) => {
-    const { categories } = useCategoryContext(); // Retrieve categories from the context
+    const { categories, setActiveCategory, activeCategory } = useCategoryContext(); // Retrieve categories from the context
 
     // State to hold form input data
     const [taskName, setTaskName] = useState('');
@@ -14,10 +14,10 @@ const TaskForm = ({ task, onSubmit, onEdit }) => {
     // Effect to update form data when editing a task
     useEffect(() => {
         if (task) {
-            setTaskName(task.title);
-            setTaskTime(task.time);
-            setTaskCategory(task.category);
-            setTaskTags(task.tags.join(', ')); // Join tags with commas
+            setTaskName(task?.title);
+            setTaskTime(task?.time);
+            setTaskCategory(activeCategory);
+            setTaskTags(task?.tags.join(', ')); // Join tags with commas
         } else {
             // Clear the form when there's no task
             setTaskName('');
@@ -25,7 +25,7 @@ const TaskForm = ({ task, onSubmit, onEdit }) => {
             setTaskCategory('');
             setTaskTags('');
         }
-    }, [task]);
+    }, [task, activeCategory]);
 
     // Handle form submission
     const handleSubmit = (e) => {
@@ -55,6 +55,7 @@ const TaskForm = ({ task, onSubmit, onEdit }) => {
 
             // Clear the form fields if it's add mode
             if (!task) {
+                setActiveCategory(taskCategory);
                 setTaskName('');
                 setTaskTime('');
                 setTaskCategory('');
@@ -87,23 +88,24 @@ const TaskForm = ({ task, onSubmit, onEdit }) => {
                         required
                     />
                 </div>
-
-                <div className="input-container">
-                    <label htmlFor="taskCategory">Task Category:</label>
-                    <select
-                        id="taskCategory"
-                        value={taskCategory}
-                        onChange={(e) => setTaskCategory(e.target.value)}
-                        required
-                    >
-                        <option value="">Select a category</option>
-                        {categories.map((category) => (
-                            <option key={category.id} value={category.id}>
-                                {category.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+                {!task && (
+                    <div className="input-container">
+                        <label htmlFor="taskCategory">Task Category:</label>
+                        <select
+                            id="taskCategory"
+                            value={taskCategory}
+                            onChange={(e) => setTaskCategory(e.target.value)}
+                            required
+                        >
+                            <option value="">Select a category</option>
+                            {categories.map((category) => (
+                                <option key={category.id} value={category.id}>
+                                    {category.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                )}
 
                 <div className="input-container">
                     <label htmlFor="taskTags">Task Tags:</label>

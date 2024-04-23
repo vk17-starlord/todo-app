@@ -245,7 +245,17 @@
     transform: translate(1px, -2px) rotate(-1deg);
   }
 }
-
+.right{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.edit{
+  font-size: 20px;
+  margin-right: 12px;
+  background-color: transparent;
+  border: none;
+}
 .not-found {
   width: 100%;
 }
