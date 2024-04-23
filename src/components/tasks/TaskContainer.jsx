@@ -18,12 +18,11 @@ function TaskContainer({ openEditForm }) {
 
     useEffect(() => {
         const activeCategory = categoryContext.activeCategory;
-        const tasks = taskContext.getTasksByCategoryId(activeCategory);
-        console.log(tasks);
-        console.log(tasks);
-        settasks(tasks);
         setactive(activeCategory);
-    }, [categoryContext.activeCategory, taskContext.tasks, showOnly, taskContext]);
+        
+        const tasks = taskContext.getTasksByCategoryId(activeCategory);
+        settasks(tasks);
+    }, [categoryContext.activeCategory, taskContext.tasks, showOnly]);
 
     return (
         <div className="w-full">

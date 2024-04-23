@@ -4,7 +4,6 @@ import useTaskContext from '../hooks/useTaskContext';
 
 function TodoBoard({ categoryID, tasks, status, openEditForm }) {
     const cardStore = useTaskContext();
-    console.log(categoryID, tasks, status, 'here');
 
     const handleDrop = (e) => {
         e.preventDefault();
@@ -12,8 +11,6 @@ function TodoBoard({ categoryID, tasks, status, openEditForm }) {
         const draggedItemId = cardStore.draggedItemID;
         const status = e.currentTarget.dataset.status;
         const parendID = e.currentTarget.dataset.categoryid;
-        console.log(e);
-        console.log(draggedItemId, status, parendID, 'here bitch');
         if (parendID && status && draggedItemId) {
             console.log(categoryID, draggedItemId, status);
             cardStore.updateTaskStatus(categoryID, draggedItemId, status);

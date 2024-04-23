@@ -109,14 +109,7 @@ const TaskContextProvider = ({ children }) => {
         if (tasks[categoryId]) {
             return tasks[categoryId];
         }
-
-        // If the specified category ID does not exist, collect all tasks from every category
-        let allTasks = [];
-        for (const catId in tasks) {
-            allTasks = [...allTasks, ...tasks[catId]]; // Append all tasks to the allTasks array
-        }
-
-        return allTasks; // Return the collection of all tasks
+        return [];
     };
 
     const getProgress = (categoryId, status) => {

@@ -49,8 +49,8 @@ function Categories() {
                     }
 
                     return (
-                        <div className={className} key={ele.id}>
-                            <div className="category" onClick={() => updateActive(ele.id)}>
+                        <div className={className} key={ele.id} onClick={() => updateActive(ele.id)}>
+                            <div className="category" >
                                 <p> {ele.name} </p>
                                 <button onClick={() => removeCategory(ele.id)}>
                                     <i className="bx bx-x"></i>
